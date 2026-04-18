@@ -1,0 +1,13 @@
+stages:
+  split_data:
+    cmd: python src/data/split_train_test.py
+    params:
+      - params.json:
+          - split.test_size
+          - split.random_state
+    deps:
+      - src/data/split_train_test.py
+      - data/raw/dataset
+    outs:
+      - data/processed/train.parquet
+      - data/processed/test.parquet

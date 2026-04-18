@@ -1,0 +1,26 @@
+schema: '2.0'
+stages:
+  split_data:
+    cmd: python src/data/split_train_test.py
+    deps:
+    - path: data/raw/dataset
+      hash: md5
+      md5: d7d4434708894b1d786706505defd2fe
+      size: 156435299
+    - path: src/data/split_train_test.py
+      hash: md5
+      md5: 0ad6290372da574ccde56336e6d4df4c
+      size: 1365
+    params:
+      params.json:
+        split.random_state: 42
+        split.test_size: 0.2
+    outs:
+    - path: data/processed/test.parquet
+      hash: md5
+      md5: 028253183c05355cbeaa5e22cdd53027
+      size: 16333156
+    - path: data/processed/train.parquet
+      hash: md5
+      md5: cd993ee7244b25ac1feee46f10cedd06
+      size: 60528603
